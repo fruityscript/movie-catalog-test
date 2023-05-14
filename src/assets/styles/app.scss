@@ -32,6 +32,90 @@
     }
 }
 
+.movieDetails {
+    &__mobile {
+        &__header {
+            padding: 5vh 2vw;
+
+            &__rating {
+                &__head {
+                    text-align: center;
+                }
+                &__main {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    max-width: 100vw;
+                    overflow: hidden;
+
+                    &__number {
+                        margin-right: 15px;
+                    }
+                }
+
+                &__sub {
+                    font-weight: 200;
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+            &__title {
+                text-align: center;
+
+                &__main {
+                    // margin-top: 1vh;
+                    font-size: 36px;
+                }
+
+                &__sub {
+                    font-size: 12px;
+                }
+            }
+            &__genres {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                margin: 2vh 0;
+            }
+            &__overview {
+                text-align: center;
+                margin: 4vh 0;
+            }
+        }
+
+        &__details {
+            text-align: center;
+            margin-bottom: 8vh;
+
+            &__header {
+                margin: 2vh 0;
+            }
+            &__budget {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 1vh;
+
+                &__text {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+
+                    &__sub {
+                        font-weight: 200;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .backButton {
     &__button {
         position: fixed !important;
@@ -56,6 +140,7 @@
 
 .container {
     &__mobile {
+        max-width: 100vw;
         overflow-y: auto;
         height: 100vh !important;
         background-color: bisque;
@@ -95,9 +180,7 @@
 }
 
 .history {
-
     &__mobile {
-
         &__table {
             max-height: 50vh;
             overflow-y: auto;

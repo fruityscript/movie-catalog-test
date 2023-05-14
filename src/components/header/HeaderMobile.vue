@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import debounce from 'lodash.debounce'
 import HistoryMobile from '../history/HistoryMobile.vue'
@@ -13,17 +13,23 @@ const genresList = computed(() => store.state.genresList)
 
 const routeName = computed(() => useRouter().currentRoute.value.name)
 
-const searchByGenre = (genresList: Array<number>) =>
+const searchByGenre = (genresList: Array<number>) => {
+    store.dispatch('setSearchString', '')
+    store.dispatch('setSearchGenres', [...genresList])
     store.dispatch('getMoviesByGenre', {
         genresList: genresList,
         page: 1,
     })
+}
 
-const searchByName = (searchString: string) =>
+const searchByName = (searchString: string) => {
+    store.dispatch('setSearchGenres', [])
+    store.dispatch('setSearchString', searchString)
     store.dispatch('getMoviesByName', {
         searchString: searchString,
         page: 1,
     })
+}
 
 watch(
     searchString,
@@ -52,7 +58,9 @@ watch(
         <v-expansion-panels class="header__mobile__panel">
             <v-expansion-panel>
                 <template v-slot:title>
-                    <span v-if="routeName === 'movie-catalog'">Movie Catalog</span>
+                    <span v-if="routeName === 'movie-catalog'"
+                        >Movie Catalog</span
+                    >
                     <span v-else>Movie Details</span>
                 </template>
                 <template v-slot:text>
