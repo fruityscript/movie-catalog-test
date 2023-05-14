@@ -12,10 +12,14 @@ const store = createStore({
             currentError: null,
             historyItems: [],
             movieSearchName: '',
-            movieSearchGenres: []
+            movieSearchGenres: [],
+            showHistoryDesktop: false,
         }
     },
     mutations: {
+        SET_SHOW_HISTORY_DESKTOP(state: any, payload: boolean) {
+            state.showHistoryDesktop = payload
+        },
         SET_SEARCH_STRING(state: any, payload: string) {
             state.movieSearchName = payload
         },
@@ -45,6 +49,9 @@ const store = createStore({
         },
     },
     actions: {
+        setShowHistoryDesktop(context: any, payload: string) {
+            context.commit('SET_SHOW_HISTORY_DESKTOP', payload)
+        },
         setSearchString(context: any, payload: string) {
             context.commit('SET_SEARCH_STRING', payload)
         },
@@ -76,7 +83,7 @@ const store = createStore({
         ) {
             axios
                 .get(
-                    `${movieApiConfig.apiUrl}movie/popular?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload}`
+                    `${movieApiConfig.apiUrl}movie/popular?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload}&include_adult=false`
                 )
                 .then((response) => {
                     context.commit('SET_MOVIES_LIST', response.data)

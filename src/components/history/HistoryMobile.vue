@@ -35,7 +35,7 @@ const viewMovie = (movie: string) => {
     <template v-if="history.length > 0">
         <v-table class="history__mobile__table">
             <tbody>
-                <tr v-for="movie in history.split('/')" :key="movie.split(';')[0]">
+                <tr v-for="movie in history.split('/').reverse()" :key="movie.split(';')[0]">
                     <td>{{ movie.split(';')[1] }}</td>
                     <td v-if="movie.split(';')[0]">
                         <v-btn @click="viewMovie(movie)"> View </v-btn>

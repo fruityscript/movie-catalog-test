@@ -10,15 +10,68 @@
         max-height: 86vh;
         overflow-y: scroll;
 
+        &__tablet {
+            max-height: 88vh;
+            overflow-y: scroll;
+        }
+
+        &__desktop {
+            background-color: red;
+            height: calc(
+                100vh - ($header-height__desktop + $pagination-height__desktop)
+            );
+            padding: 2vh 1vw;
+
+            &__cards {
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                background-color: green;
+                display: flex;
+                // flex-direction: row;
+                flex-direction: column;
+                // flex-wrap: wrap;
+                gap: 10px;
+                overflow-y: auto;
+
+                &__card {
+                    width: 600px !important;
+                    height: 200px !important;
+                    // height: 20%;
+                    flex-grow: 1;
+                }
+            }
+        }
+
         &__cards {
             display: flex;
             flex-direction: column;
             padding: 2vh 2vw;
             overflow-y: auto;
 
+            &__desktop {
+                background-color: red;
+                flex-direction: row;
+                row-gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
+
+                &__card {
+                    margin-bottom: 2vh;
+                    margin-right: 2vh;
+                    width: 20%;
+                }
+            }
+
             &__card {
                 margin-bottom: 2vh;
             }
+        }
+    }
+
+    &__pagination {
+        &__desktop {
+            background-color: yellow;
         }
     }
 
@@ -136,6 +189,12 @@
         top: 9vh !important;
         left: 10% !important;
     }
+    &__desktop {
+        // width: 80% !important;
+        position: fixed !important;
+        top: 5vh !important;
+        right: 2vw !important;
+    }
 }
 
 .container {
@@ -143,17 +202,27 @@
         max-width: 100vw;
         overflow-y: auto;
         height: 100vh !important;
-        background-color: bisque;
         position: relative;
     }
 
     &__tablet {
-        height: calc(100vh - $header-height__tablet);
+        max-width: 100vw;
+        overflow-y: auto;
+        height: 100vh !important;
     }
 
-    &__pc {
-        height: calc(100vh - $header-height__pc);
+    &__desktop {
+        max-width: 100vw;
+        overflow-y: auto;
+        height: 100vh !important;
     }
+}
+
+.v-card--reveal {
+    bottom: 0 !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    width: 100%;
 }
 
 .header {
@@ -176,6 +245,15 @@
                 z-index: 999999;
             }
         }
+    }
+
+    &__desktop {
+        text-align: center;
+        height: $header-height__desktop;
+        background-color: gray;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 }
 

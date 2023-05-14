@@ -59,7 +59,7 @@ watch(
             <v-expansion-panel>
                 <template v-slot:title>
                     <span v-if="routeName === 'movie-catalog'"
-                        >Movie Catalog</span
+                        >Menu</span
                     >
                     <span v-else>Movie Details</span>
                 </template>

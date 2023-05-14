@@ -2,8 +2,12 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 import HeaderMobile from '../components/header/HeaderMobile.vue'
-import MovieCatalog from '../components/MovieCatalog.vue'
-import ErrorMessage from '../components/ErrorMessage.vue';
+import HeaderTablet from '../components/header/HeaderTablet.vue'
+import MovieCatalogMobile from '../components/catalog/MovieCatalogMobile.vue'
+import MovieCatalogTablet from '../components/catalog/MovieCatalogTablet.vue'
+import MovieCatalogDesktop from '../components/catalog/MovieCatalogDesktop.vue'
+import ErrorMessage from '../components/ErrorMessage.vue'
+import HeaderDesktop from '../components/header/HeaderDesktop.vue'
 
 const store = useStore()
 
@@ -19,23 +23,24 @@ onMounted(() => {
         <MqResponsive target="xs">
             <div class="container__mobile">
                 <HeaderMobile />
-                <MovieCatalog />
+                <MovieCatalogMobile />
             </div>
         </MqResponsive>
 
         <!-- Tablet -->
         <MqResponsive target="sm">
-            <div>Tablet vertical / Phone horizontal content</div>
-        </MqResponsive>
-
-        <!-- Tablet horizontal -->
-        <MqResponsive target="md">
-            <div>Tablet horizontal content</div>
+            <div class="container__tablet">
+                <HeaderTablet />
+                <MovieCatalogTablet />
+            </div>
         </MqResponsive>
 
         <!-- PC -->
-        <MqResponsive :target="['lg', 'xl']">
-            <div>PC content</div>
+        <MqResponsive :target="['md', 'lg', 'xl']">
+            <div class="container__desktop">
+                <HeaderDesktop />
+                <MovieCatalogDesktop />
+            </div>
         </MqResponsive>
 
         <ErrorMessage />

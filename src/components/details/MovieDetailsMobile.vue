@@ -9,7 +9,12 @@ const props = defineProps({
 
 <template>
     <div class="movieDetails__mobile">
-        <div class="movieDetails__mobile__header">
+        <div
+            class="movieDetails__mobile__header"
+            :style="{
+                'background-image': `linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url(https://image.tmdb.org/t/p/original/${movie.poster_path})`,
+            }"
+        >
             <div class="movieDetails__mobile__header__title">
                 <h2 class="movieDetails__mobile__header__title__main">
                     {{ movie.title }}
@@ -71,7 +76,7 @@ const props = defineProps({
                     <div
                         class="movieDetails__mobile__details__budget__text__main"
                     >
-                        {{ movie.budget }}$
+                        {{ movie.budget || '-' }}$
                     </div>
                     <div
                         class="movieDetails__mobile__details__budget__text__sub"
@@ -83,7 +88,7 @@ const props = defineProps({
                     <div
                         class="movieDetails__mobile__details__budget__text__main"
                     >
-                        {{ movie.revenue }}$
+                        {{ movie.revenue || '-' }}$
                     </div>
                     <div
                         class="movieDetails__mobile__details__budget__text__sub"
@@ -97,7 +102,7 @@ const props = defineProps({
                     <div
                         class="movieDetails__mobile__details__budget__text__main"
                     >
-                        {{ movie.popularity }}$
+                        {{ movie.popularity || '-' }}
                     </div>
                     <div
                         class="movieDetails__mobile__details__budget__text__sub"
@@ -109,7 +114,7 @@ const props = defineProps({
                     <div
                         class="movieDetails__mobile__details__budget__text__main"
                     >
-                        {{ movie.imdb_id }}$
+                        {{ movie.imdb_id || '-' }}
                     </div>
                     <div
                         class="movieDetails__mobile__details__budget__text__sub"

@@ -39,7 +39,10 @@ watch(errorList, (newValue) => {
         </MqResponsive>
 
         <MqResponsive :target="['md', 'lg', 'xl']">
-            <div class="movieCatalog__pc">PC catalog (tablet horizontal)</div>
+            <v-alert type="error" icon="$error" class="errorMessage__desktop">
+                <template #title>Error</template>
+                <template #text>{{ currentError }}</template>
+            </v-alert>
         </MqResponsive>
     </template>
 </template>
