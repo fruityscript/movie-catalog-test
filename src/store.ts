@@ -11,9 +11,17 @@ const store = createStore({
             errorList: [],
             currentError: null,
             historyItems: [],
+            movieSearchName: '',
+            movieSearchGenres: []
         }
     },
     mutations: {
+        SET_SEARCH_STRING(state: any, payload: string) {
+            state.movieSearchName = payload
+        },
+        SET_SEARCH_GENRES(state: any, payload: Array<number>) {
+            state.movieSearchGenres = [...payload]
+        },
         UPDATE_ERRORS(state: any, payload: Array<string>) {
             state.errorList = [...payload]
         },
@@ -37,6 +45,12 @@ const store = createStore({
         },
     },
     actions: {
+        setSearchString(context: any, payload: string) {
+            context.commit('SET_SEARCH_STRING', payload)
+        },
+        setSearchGenres(context: any, payload: Array<number>) {
+            context.commit('SET_SEARCH_GENRES', [...payload])
+        },
         getGenres(context: any, payload: any) {
             axios
                 .get(
