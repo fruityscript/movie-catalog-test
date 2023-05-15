@@ -8,6 +8,7 @@ import MovieCatalogTablet from '../components/catalog/MovieCatalogTablet.vue'
 import MovieCatalogDesktop from '../components/catalog/MovieCatalogDesktop.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
 import HeaderDesktop from '../components/header/HeaderDesktop.vue'
+import HistoryDesktop from '@/components/history/HistoryDesktop.vue'
 
 const store = useStore()
 
@@ -30,7 +31,7 @@ onMounted(() => {
         <!-- Tablet -->
         <MqResponsive target="sm">
             <div class="container__tablet">
-                <HeaderTablet />
+                <HeaderMobile />
                 <MovieCatalogTablet />
             </div>
         </MqResponsive>
@@ -40,6 +41,7 @@ onMounted(() => {
             <div class="container__desktop">
                 <HeaderDesktop />
                 <MovieCatalogDesktop />
+                <HistoryDesktop />
             </div>
         </MqResponsive>
 

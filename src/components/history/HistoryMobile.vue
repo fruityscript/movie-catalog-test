@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const history = ref('')
 
 onMounted(() => {
@@ -12,8 +13,6 @@ const clearHistory = () => {
     localStorage.setItem('history', '')
     history.value = ''
 }
-
-const router = useRouter()
 
 const viewMovie = (movie: string) => {
     const oldHistory = localStorage.getItem('history')
@@ -44,7 +43,7 @@ const viewMovie = (movie: string) => {
             </tbody>
         </v-table>
         <v-btn class="history__mobile__clear" @click="clearHistory">
-            Clear History Mobile
+            Clear History
         </v-btn>
     </template>
     <template v-else>

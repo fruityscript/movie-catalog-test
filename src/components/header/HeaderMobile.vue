@@ -58,9 +58,7 @@ watch(
         <v-expansion-panels class="header__mobile__panel">
             <v-expansion-panel>
                 <template v-slot:title>
-                    <span v-if="routeName === 'movie-catalog'"
-                        >Menu</span
-                    >
+                    <span v-if="routeName === 'movie-catalog'">Menu</span>
                     <span v-else>Movie Details</span>
                 </template>
                 <template v-slot:text>
@@ -82,7 +80,7 @@ watch(
                                     :items="genresList.map(x => (x as Record<string, any>).name)"
                                     multiple
                                 ></v-select>
-                                <a
+                                <v-btn
                                     @click="
                                         () => {
                                             searchMode =
@@ -91,13 +89,15 @@ watch(
                                                     : 'genre'
                                         }
                                     "
-                                    >Search by
-                                    <span>{{
-                                        searchMode === 'genre'
-                                            ? 'name'
-                                            : 'genre'
-                                    }}</span></a
                                 >
+                                    {{
+                                        `Switch to ${
+                                            searchMode === 'genre'
+                                                ? 'title'
+                                                : 'genre'
+                                        } search`
+                                    }}
+                                </v-btn>
                             </template>
                         </v-expansion-panel>
 
@@ -110,44 +110,6 @@ watch(
                     </v-expansion-panels>
                 </template>
             </v-expansion-panel>
-
-            <!-- <v-expansion-panel>
-                <template v-slot:title> Search </template>
-                <template v-slot:text>
-                    <v-text-field
-                        v-if="searchMode === 'name'"
-                        v-model="searchString"
-                        label="Search by name..."
-                    ></v-text-field>
-                    <v-select
-                        v-if="searchMode === 'genre'"
-                        v-model="selectedGenres"
-                        clearable
-                        label="Select genre..."
-                        :items="genresList.map(x => (x as Record<string, any>).name)"
-                        multiple
-                    ></v-select>
-                    <a
-                        @click="
-                            () => {
-                                searchMode =
-                                    searchMode === 'genre' ? 'name' : 'genre'
-                            }
-                        "
-                        >Search by
-                        <span>{{
-                            searchMode === 'genre' ? 'name' : 'genre'
-                        }}</span></a
-                    >
-                </template>
-            </v-expansion-panel> -->
-
-            <!-- <v-expansion-panel>
-                <template v-slot:title> History </template>
-                <template v-slot:text>
-                    <HistoryMobile />
-                </template>
-            </v-expansion-panel> -->
         </v-expansion-panels>
     </div>
 </template>

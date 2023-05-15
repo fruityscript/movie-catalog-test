@@ -8,6 +8,7 @@ import MovieDetailsMobile from '../components/details/MovieDetailsMobile.vue'
 import MovieDetailsTablet from '../components/details/MovieDetailsTablet.vue'
 import MovieDetailsDesktop from '../components/details/MovieDetailsDesktop.vue'
 import HeaderDesktop from '../components/header/HeaderDesktop.vue'
+import HistoryDesktop from '@/components/history/HistoryDesktop.vue'
 
 const props = defineProps({
     id: {
@@ -39,21 +40,24 @@ onMounted(() => {
     </MqResponsive>
 
     <!-- Tablet -->
-    <MqResponsive target="sm">
-        <MovieDetailsTablet :movie="movieInfo" />
+    <MqResponsive :target="['sm', 'md']">
+        <div class="container__tablet">
+            <HeaderMobile />
+            <MovieDetailsMobile :movie="movieInfo" />
+        </div>
     </MqResponsive>
 
-    <!-- Tablet horizontal -->
-    <MqResponsive target="md">
-        <div>Tablet horizontal content</div>
-        <MovieDetailsTablet :movie="movieInfo" />
-    </MqResponsive>
-
-    <!-- PC -->
+    <!-- Desktop -->
     <MqResponsive :target="['lg', 'xl']">
-        <HeaderDesktop />
-        <MovieDetailsDesktop :movie="movieInfo" />
+        <div class="container__desktop">
+            <HeaderDesktop />
+            <MovieDetailsDesktop :movie="movieInfo" />
+            <HistoryDesktop />
+        </div>
     </MqResponsive>
 
-    <BackButton />
+    <!-- NOT Desktop -->
+    <MqResponsive :target="['xs', 'sm', 'md']">
+        <BackButton />
+    </MqResponsive>
 </template>

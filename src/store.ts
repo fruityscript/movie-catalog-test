@@ -14,9 +14,13 @@ const store = createStore({
             movieSearchName: '',
             movieSearchGenres: [],
             showHistoryDesktop: false,
+            controlTypeDesktop: 'fixed',
         }
     },
     mutations: {
+        SET_CONTROLS_TYPE_DESKTOP(state: any, payload: string) {
+            state.controlTypeDesktop = payload
+        },
         SET_SHOW_HISTORY_DESKTOP(state: any, payload: boolean) {
             state.showHistoryDesktop = payload
         },
@@ -49,6 +53,9 @@ const store = createStore({
         },
     },
     actions: {
+        setDesktopControlType(context: any, payload: string) {
+            context.commit('SET_CONTROLS_TYPE_DESKTOP', payload)
+        },
         setShowHistoryDesktop(context: any, payload: string) {
             context.commit('SET_SHOW_HISTORY_DESKTOP', payload)
         },

@@ -12,6 +12,8 @@ const props = defineProps({
         <div
             class="movieDetails__mobile__header"
             :style="{
+                'color': 'white',
+                'background-size': 'cover',
                 'background-image': `linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url(https://image.tmdb.org/t/p/original/${movie.poster_path})`,
             }"
         >
