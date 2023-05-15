@@ -12,10 +12,28 @@ const store = createStore({
             currentError: null,
             historyItems: [],
             movieSearchName: '',
-            movieSearchGenres: []
+            movieSearchGenres: [],
+            showHistoryDesktop: false,
+            controlTypeDesktop: 'fixed',
         }
     },
     mutations: {
+        RENAME_MOVIE(state: any, payload: any) {
+            const moviesListCopy = state.moviesList.results
+            for (let i = 0; i < moviesListCopy.length; i++) {
+                const element = moviesListCopy[i];
+                if (element.id === payload.id) {
+                    moviesListCopy[i].title = payload.title
+                }
+            }
+            state.moviesList.results = moviesListCopy
+        },
+        SET_CONTROLS_TYPE_DESKTOP(state: any, payload: string) {
+            state.controlTypeDesktop = payload
+        },
+        SET_SHOW_HISTORY_DESKTOP(state: any, payload: boolean) {
+            state.showHistoryDesktop = payload
+        },
         SET_SEARCH_STRING(state: any, payload: string) {
             state.movieSearchName = payload
         },
@@ -45,6 +63,15 @@ const store = createStore({
         },
     },
     actions: {
+        renameMovie(context: any, payload: any) {
+            context.commit('RENAME_MOVIE', payload)
+        },
+        setDesktopControlType(context: any, payload: string) {
+            context.commit('SET_CONTROLS_TYPE_DESKTOP', payload)
+        },
+        setShowHistoryDesktop(context: any, payload: string) {
+            context.commit('SET_SHOW_HISTORY_DESKTOP', payload)
+        },
         setSearchString(context: any, payload: string) {
             context.commit('SET_SEARCH_STRING', payload)
         },
@@ -60,7 +87,6 @@ const store = createStore({
                     context.commit('SET_GENRES_LIST', response.data.genres)
                 })
                 .catch((error) => {
-                    console.log('Got error genres', error.message)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
@@ -70,19 +96,17 @@ const store = createStore({
         setErrorList(context: any, payload: Array<string>) {
             context.commit('UPDATE_ERRORS', payload)
         },
-        //
         getPopularMovies(
             context: any, payload: number
         ) {
             axios
                 .get(
-                    `${movieApiConfig.apiUrl}movie/popular?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload}`
+                    `${movieApiConfig.apiUrl}movie/popular?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload}&include_adult=false`
                 )
                 .then((response) => {
                     context.commit('SET_MOVIES_LIST', response.data)
                 })
                 .catch((error) => {
-                    console.log('Got error popular movies', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
@@ -91,15 +115,13 @@ const store = createStore({
         ) {
             axios
                 .get(
-                    `${movieApiConfig.apiUrl}discover/movie?api_key=${movieApiConfig.apiKey}&language=en-US&with_genres=${payload.genresList?.join(',')}`
+                    `${movieApiConfig.apiUrl}discover/movie?api_key=${movieApiConfig.apiKey}&language=en-US&with_genres=${payload.genresList?.join(',')}&page=${payload.page}`
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
-                    console.log('Got error movies by genres', error)
                 })
         },
         getMoviesByName(
@@ -110,15 +132,12 @@ const store = createStore({
                     `${movieApiConfig.apiUrl}search/movie?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload.page}&include_adult=false&query=${payload.searchString}`
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
-                    console.log('Got error movies by name', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
-        //
         getMovies(
             context: any, payload: { searchString: string | null, genresList: Array<number> | null, page: number }
         ) {
@@ -135,11 +154,9 @@ const store = createStore({
                     requestLine
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
-                    console.log('Got error movies', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },

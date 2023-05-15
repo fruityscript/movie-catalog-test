@@ -3,10 +3,9 @@ import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import BackButton from '../components/BackButton.vue'
 import apiConfig from '../configs/movie-db-config'
-import HeaderMobile from '../components/header/HeaderMobile.vue'
-import MovieDetailsMobile from '../components/details/MovieDetailsMobile.vue'
-import MovieDetailsTablet from '../components/details/MovieDetailsTablet.vue'
-import MovieDetailsDesktop from '../components/details/MovieDetailsDesktop.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
+import MovieDetailsComponent from '../components/MovieDetailsComponent.vue'
+import HistoryComponent from '../components/HistoryComponent.vue'
 
 const props = defineProps({
     id: {
@@ -32,28 +31,31 @@ onMounted(() => {
     <!-- Mobile -->
     <MqResponsive target="xs">
         <div class="container__mobile">
-            <HeaderMobile />
-            <MovieDetailsMobile :movie="movieInfo" />
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
         </div>
     </MqResponsive>
 
     <!-- Tablet -->
-    <MqResponsive target="sm">
-        <div>Tablet vertical / Phone horizontal content</div>
-        <MovieDetailsTablet />
+    <MqResponsive :target="['sm', 'md']">
+        <div class="container__tablet">
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
+            <HistoryComponent />
+        </div>
     </MqResponsive>
 
-    <!-- Tablet horizontal -->
-    <MqResponsive target="md">
-        <div>Tablet horizontal content</div>
-        <MovieDetailsTablet />
-    </MqResponsive>
-
-    <!-- PC -->
+    <!-- Desktop -->
     <MqResponsive :target="['lg', 'xl']">
-        <div>Desktop content</div>
-        <MovieDetailsDesktop />
+        <div class="container__desktop">
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
+            <HistoryComponent />
+        </div>
     </MqResponsive>
 
-    <BackButton />
+    <!-- NOT Desktop -->
+    <MqResponsive :target="['xs', 'sm', 'md']">
+        <BackButton />
+    </MqResponsive>
 </template>

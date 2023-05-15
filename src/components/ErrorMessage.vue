@@ -6,7 +6,8 @@ const store = useStore()
 const errorList = computed(() => [...store.state.errorList])
 const currentError = ref('')
 
-const updateErrorList = (newErrorList: Array<string>) => store.dispatch('setErrorList', newErrorList)
+const updateErrorList = (newErrorList: Array<string>) =>
+    store.dispatch('setErrorList', newErrorList)
 
 watch(errorList, (newValue) => {
     if (newValue.length > 0) {
@@ -18,13 +19,13 @@ watch(errorList, (newValue) => {
         setTimeout(() => {
             currentError.value = ''
             updateErrorList(errorMessagesCopy)
-        }, 5000)
+        }, 3000)
     }
 })
 </script>
 
 <template>
-    <template v-if="currentError.length > 0">
+    <template v-if="errorList.length > 0">
         <MqResponsive target="xs">
             <v-alert type="error" icon="$error" class="errorMessage__mobile">
                 <template #title>Error</template>
@@ -39,7 +40,10 @@ watch(errorList, (newValue) => {
         </MqResponsive>
 
         <MqResponsive :target="['md', 'lg', 'xl']">
-            <div class="movieCatalog__pc">PC catalog (tablet horizontal)</div>
+            <v-alert type="error" icon="$error" class="errorMessage__desktop">
+                <template #title>Error</template>
+                <template #text>{{ currentError }}</template>
+            </v-alert>
         </MqResponsive>
     </template>
 </template>
