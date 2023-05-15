@@ -3,13 +3,8 @@ import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import BackButton from '../components/BackButton.vue'
 import apiConfig from '../configs/movie-db-config'
-import HeaderMobile from '../components/header/HeaderMobile.vue'
-import MovieDetailsMobile from '../components/details/MovieDetailsMobile.vue'
-import MovieDetailsTablet from '../components/details/MovieDetailsTablet.vue'
-import MovieDetailsDesktop from '../components/details/MovieDetailsDesktop.vue'
-import HeaderDesktop from '../components/header/HeaderDesktop.vue'
-import HistoryDesktop from '@/components/history/HistoryDesktop.vue'
-import HistoryTablet from '@/components/history/HistoryTablet.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
+import MovieDetailsComponent from '../components/MovieDetailsComponent.vue'
 
 const props = defineProps({
     id: {
@@ -35,26 +30,26 @@ onMounted(() => {
     <!-- Mobile -->
     <MqResponsive target="xs">
         <div class="container__mobile">
-            <HeaderMobile />
-            <MovieDetailsMobile :movie="movieInfo" />
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
         </div>
     </MqResponsive>
 
     <!-- Tablet -->
     <MqResponsive :target="['sm', 'md']">
         <div class="container__tablet">
-            <HeaderMobile />
-            <MovieDetailsMobile :movie="movieInfo" />
-            <HistoryTablet />
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
+            <HistoryComponent />
         </div>
     </MqResponsive>
 
     <!-- Desktop -->
     <MqResponsive :target="['lg', 'xl']">
         <div class="container__desktop">
-            <HeaderDesktop />
-            <MovieDetailsDesktop :movie="movieInfo" />
-            <HistoryDesktop />
+            <HeaderComponent />
+            <MovieDetailsComponent :movie="movieInfo" />
+            <HistoryComponent />
         </div>
     </MqResponsive>
 

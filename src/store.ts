@@ -118,10 +118,9 @@ const store = createStore({
         ) {
             axios
                 .get(
-                    `${movieApiConfig.apiUrl}discover/movie?api_key=${movieApiConfig.apiKey}&language=en-US&with_genres=${payload.genresList?.join(',')}`
+                    `${movieApiConfig.apiUrl}discover/movie?api_key=${movieApiConfig.apiKey}&language=en-US&with_genres=${payload.genresList?.join(',')}&page=${payload.page}`
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
@@ -137,7 +136,6 @@ const store = createStore({
                     `${movieApiConfig.apiUrl}search/movie?api_key=${movieApiConfig.apiKey}&language=en-US&page=${payload.page}&include_adult=false&query=${payload.searchString}`
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
@@ -162,7 +160,6 @@ const store = createStore({
                     requestLine
                 )
                 .then((moviesResponse) => {
-                    console.log(moviesResponse.data)
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {

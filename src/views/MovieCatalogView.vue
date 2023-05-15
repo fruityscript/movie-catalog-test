@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
-import HeaderMobile from '../components/header/HeaderMobile.vue'
-import HeaderTablet from '../components/header/HeaderTablet.vue'
-import MovieCatalogMobile from '../components/catalog/MovieCatalogMobile.vue'
-import MovieCatalogTablet from '../components/catalog/MovieCatalogTablet.vue'
-import MovieCatalogDesktop from '../components/catalog/MovieCatalogDesktop.vue'
+import MovieCatalogComponent from '../components/MovieCatalogComponent.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
-import HeaderDesktop from '../components/header/HeaderDesktop.vue'
-import HistoryDesktop from '@/components/history/HistoryDesktop.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
+import HistoryComponent from '../components/HistoryComponent.vue'
+import PaginationComponent from '../components/PaginationComponent.vue'
 
 const store = useStore()
 
@@ -23,27 +20,29 @@ onMounted(() => {
         <!-- Mobile -->
         <MqResponsive target="xs">
             <div class="container__mobile">
-                <HeaderMobile />
-                <MovieCatalogMobile />
+                <HeaderComponent />
+                <MovieCatalogComponent />
             </div>
         </MqResponsive>
 
         <!-- Tablet -->
         <MqResponsive target="sm">
             <div class="container__tablet">
-                <HeaderMobile />
-                <MovieCatalogTablet />
+                <HeaderComponent />
+                <MovieCatalogComponent />
             </div>
         </MqResponsive>
 
         <!-- PC -->
         <MqResponsive :target="['md', 'lg', 'xl']">
             <div class="container__desktop">
-                <HeaderDesktop />
-                <MovieCatalogDesktop />
-                <HistoryDesktop />
+                <HeaderComponent />
+                <MovieCatalogComponent />
+                <HistoryComponent />
             </div>
         </MqResponsive>
+
+        <PaginationComponent />
 
         <ErrorMessage />
     </main>
