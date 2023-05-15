@@ -2,6 +2,8 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import RenameComponent from './RenameComponent.vue'
+import RenameButtonFunctional from './RenameButtonFuctional.vue'
+import ViewButtonFunctional from './ViewButtonFunctional.vue'
 
 const store = useStore()
 const genresList = computed(() => store.state.genresList)
@@ -35,7 +37,7 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
 <template>
     <v-card class="mx-auto">
         <v-img
-            :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`"
+            :src="`https://image.tmdb.org/t/p/original/${movie?.poster_path}`"
             class="align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="200px"
@@ -43,7 +45,7 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
         >
             <v-card-title
                 class="text-white"
-                v-text="movie.title"
+                v-text="movie?.title"
             ></v-card-title>
         </v-img>
 
@@ -57,13 +59,9 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
 
             <v-spacer></v-spacer>
 
-            <v-btn
-                size="small"
-                color="surface-variant"
-                variant="text"
-                icon="mdi-pencil"
-                @click="() => (showRenameDialog = true)"
-            ></v-btn>
+            <RenameButtonFunctional
+                @showRenameDialog="() => (showRenameDialog = true)"
+            />
 
             <RenameComponent
                 :editableId="movie.id"
@@ -73,17 +71,10 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
                 @close="() => (showRenameDialog = false)"
             />
 
-            <RouterLink
-                :to="`movie/${movie.id}`"
-                @click="registerHistory(movie)"
-            >
-                <v-btn
-                    size="small"
-                    color="surface-variant"
-                    variant="text"
-                    icon="mdi-open-in-new"
-                ></v-btn>
-            </RouterLink>
+            <ViewButtonFunctional
+                :editableId="movie.id"
+                @registerHistory="registerHistory(movie)"
+            />
         </v-card-actions>
 
         <v-expand-transition>

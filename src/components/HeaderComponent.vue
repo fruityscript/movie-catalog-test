@@ -14,7 +14,7 @@ const genresList = computed(() => store.state.genresList)
 const routeName = computed(() => useRouter().currentRoute.value.name)
 const selectedGenres = ref([])
 
-onMounted(() => controlsSwitch.value = store.state.controlTypeDesktop)
+onMounted(() => (controlsSwitch.value = store.state.controlTypeDesktop))
 
 const searchByGenre = (genresList) => {
     store.dispatch('setSearchString', '')
@@ -71,7 +71,9 @@ watch(
                         <span v-else>Movie Details</span>
                     </template>
                     <template v-slot:text>
-                        <v-expansion-panels class="headerComponent__mobile__panel">
+                        <v-expansion-panels
+                            class="headerComponent__mobile__panel"
+                        >
                             <v-expansion-panel
                                 v-if="routeName === 'movie-catalog'"
                             >
@@ -135,7 +137,9 @@ watch(
                         <span v-else>Movie Details</span>
                     </template>
                     <template v-slot:text>
-                        <v-expansion-panels class="headerComponent__mobile__panel">
+                        <v-expansion-panels
+                            class="headerComponent__mobile__panel"
+                        >
                             <v-expansion-panel
                                 v-if="routeName === 'movie-catalog'"
                             >
