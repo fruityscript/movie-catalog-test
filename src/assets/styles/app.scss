@@ -297,20 +297,32 @@
 }
 
 .history {
+    &__tablet {
+        width: 300px !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+
+        &__actions {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        }
+
+        &__table {
+        }
+    }
     &__desktop {
         &__fixed {
             width: 300px !important;
             position: absolute !important;
-            bottom: 0 !important;
+            bottom: $pagination-height__desktop !important;
             right: 0 !important;
 
             &__actions {
                 display: flex;
                 align-items: center;
                 padding-top: 15px;
-            }
-
-            &__table {
             }
         }
         &__draggableContainer {

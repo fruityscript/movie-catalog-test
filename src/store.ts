@@ -18,6 +18,16 @@ const store = createStore({
         }
     },
     mutations: {
+        RENAME_MOVIE(state: any, payload: any) {
+            const moviesListCopy = state.moviesList.results
+            for (let i = 0; i < moviesListCopy.length; i++) {
+                const element = moviesListCopy[i];
+                if (element.id === payload.id) {
+                    moviesListCopy[i].title = payload.title
+                }
+            }
+            state.moviesList.results = moviesListCopy
+        },
         SET_CONTROLS_TYPE_DESKTOP(state: any, payload: string) {
             state.controlTypeDesktop = payload
         },
@@ -53,6 +63,9 @@ const store = createStore({
         },
     },
     actions: {
+        renameMovie(context: any, payload: any) {
+            context.commit('RENAME_MOVIE', payload)
+        },
         setDesktopControlType(context: any, payload: string) {
             context.commit('SET_CONTROLS_TYPE_DESKTOP', payload)
         },

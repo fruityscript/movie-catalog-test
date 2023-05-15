@@ -9,6 +9,7 @@ import MovieDetailsTablet from '../components/details/MovieDetailsTablet.vue'
 import MovieDetailsDesktop from '../components/details/MovieDetailsDesktop.vue'
 import HeaderDesktop from '../components/header/HeaderDesktop.vue'
 import HistoryDesktop from '@/components/history/HistoryDesktop.vue'
+import HistoryTablet from '@/components/history/HistoryTablet.vue'
 
 const props = defineProps({
     id: {
@@ -44,6 +45,7 @@ onMounted(() => {
         <div class="container__tablet">
             <HeaderMobile />
             <MovieDetailsMobile :movie="movieInfo" />
+            <HistoryTablet />
         </div>
     </MqResponsive>
 

@@ -5,10 +5,6 @@ import { useStore } from 'vuex'
 import { RouterLink } from 'vue-router'
 import useLocalStorage from '@/useLocalStorage'
 
-defineProps<{
-    errorMessage: string
-}>()
-
 const store = useStore()
 const currentPage = ref(1)
 const moviesList = computed(() => store.state.moviesList.results)

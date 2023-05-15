@@ -1,5 +1,16 @@
 $header-height: 5vh;
+
+// Header
 $header-height__mobile: 7vh;
 $header-height__tablet: 7vh;
-$header-height__desktop: 7vh;
-$pagination-height__desktop: 7vh;
+$header-height__desktop: 60px;
+
+// Pagination
+$pagination-height__desktop: 60px;
+$pagination-height__tablet: 60px;
+$pagination-height__mobile: 60px;
+
+// Content
+$content-height__desktop: calc(100vh - ($pagination-height__desktop + $header-height__desktop));
+$content-height__tablet: calc(100vh - ($pagination-height__tablet + $header-height__tablet));
+$content-height__mobile: calc(100vh - ($pagination-height__mobile + $header-height__mobile));

@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+import RenameComponent from './RenameComponent.vue'
 
+const store = useStore()
+const genresList = computed(() => store.state.genresList)
 const props = defineProps({
     movie: {
         type: Object,
@@ -9,6 +13,7 @@ const props = defineProps({
 })
 
 const revealDescription = ref(false)
+const showRenameDialog = ref(false)
 
 const registerHistory = (movie: Record<string, any>) => {
     const oldHistory = localStorage.getItem('history')
@@ -23,6 +28,8 @@ const registerHistory = (movie: Record<string, any>) => {
         localStorage.setItem('history', `${movie.id};${movie.title}`)
     }
 }
+
+const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
 </script>
 
 <template>
@@ -45,7 +52,7 @@ const registerHistory = (movie: Record<string, any>) => {
                 variant="text"
                 color="teal-accent-4"
                 @click="revealDescription = true"
-                >Description</v-btn
+                >View Genres</v-btn
             >
 
             <v-spacer></v-spacer>
@@ -55,7 +62,16 @@ const registerHistory = (movie: Record<string, any>) => {
                 color="surface-variant"
                 variant="text"
                 icon="mdi-pencil"
+                @click="() => (showRenameDialog = true)"
             ></v-btn>
+
+            <RenameComponent
+                :editableId="movie.id"
+                :isOpened="showRenameDialog"
+                :editableName="movie.title"
+                @renameMovie="(evnt) => renameMovie(evnt)"
+                @close="() => (showRenameDialog = false)"
+            />
 
             <RouterLink
                 :to="`movie/${movie.id}`"
@@ -77,9 +93,18 @@ const registerHistory = (movie: Record<string, any>) => {
                 style="height: 100%"
             >
                 <v-card-text class="pb-0">
-                    <p class="text-h4 text--primary">Overview</p>
+                    <p class="text-h4 text--primary">Genres</p>
                     <p>
-                        {{ movie.overview }}
+                        {{
+                            movie.genre_ids
+                                .map(
+                                    (x) =>
+                                        genresList.filter(
+                                            (genreItem) => genreItem.id === x
+                                        )[0].name
+                                )
+                                .join(', ')
+                        }}
                     </p>
                 </v-card-text>
                 <v-card-actions class="pt-0">
