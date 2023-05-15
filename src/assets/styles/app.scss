@@ -9,7 +9,9 @@
     &__mobile {
         &__content {
             margin-top: $header-height__mobile;
-            max-height: calc(100vh - ($header-height__mobile + $pagination-height__mobile));
+            max-height: calc(
+                100vh - ($header-height__mobile + $pagination-height__mobile)
+            );
             overflow-y: scroll;
         }
         &__pagination {
@@ -103,7 +105,7 @@
     }
     &__mobile {
         margin-top: $header-height__mobile;
-         
+
         &__header {
             color: white;
             padding: 5vh 2vw;
@@ -237,7 +239,7 @@
     width: 100%;
 }
 
-.header {
+.headerComponent {
     &__mobile {
         height: $header-height__mobile;
         width: 100%;
@@ -262,7 +264,7 @@
     &__desktop {
         padding: 0 1vw;
         height: $header-height__desktop;
-        background-color: gray;
+        background-color: $header-color__desktop;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -286,13 +288,21 @@
                     margin-top: 2vh;
                 }
             }
-            &__text {
-            }
         }
     }
 }
 
-.history {
+.historyComponent {
+    &__mobile {
+        &__table {
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        &__clear {
+            margin-top: 2vh;
+        }
+    }
     &__tablet {
         width: 300px !important;
         position: absolute !important;
@@ -304,16 +314,14 @@
             align-items: center;
             padding-top: 15px;
         }
-
-        &__table {
-        }
     }
     &__desktop {
         &__fixed {
             width: 300px !important;
             position: absolute !important;
-            bottom: $pagination-height__desktop !important;
+            bottom: 5px !important;
             right: 0 !important;
+            z-index: 100 !important;
 
             &__actions {
                 display: flex;
@@ -322,8 +330,8 @@
             }
         }
         &__draggableContainer {
-            width: 250px;
-            max-height: 55vh;
+            width: fit-content;
+            height: fit-content;
             position: absolute;
             border-radius: 5px;
             border: 0.5px solid grey;
@@ -370,16 +378,6 @@
                 background-color: white;
                 border-radius: 5px;
             }
-        }
-    }
-    &__mobile {
-        &__table {
-            max-height: 50vh;
-            overflow-y: auto;
-        }
-
-        &__clear {
-            margin-top: 2vh;
         }
     }
 }

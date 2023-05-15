@@ -87,7 +87,6 @@ const store = createStore({
                     context.commit('SET_GENRES_LIST', response.data.genres)
                 })
                 .catch((error) => {
-                    console.log('Got error genres', error.message)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
@@ -97,7 +96,6 @@ const store = createStore({
         setErrorList(context: any, payload: Array<string>) {
             context.commit('UPDATE_ERRORS', payload)
         },
-        //
         getPopularMovies(
             context: any, payload: number
         ) {
@@ -109,7 +107,6 @@ const store = createStore({
                     context.commit('SET_MOVIES_LIST', response.data)
                 })
                 .catch((error) => {
-                    console.log('Got error popular movies', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
@@ -125,7 +122,6 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
-                    console.log('Got error movies by genres', error)
                 })
         },
         getMoviesByName(
@@ -139,11 +135,9 @@ const store = createStore({
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
-                    console.log('Got error movies by name', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },
-        //
         getMovies(
             context: any, payload: { searchString: string | null, genresList: Array<number> | null, page: number }
         ) {
@@ -163,7 +157,6 @@ const store = createStore({
                     context.commit('SET_MOVIES_LIST', moviesResponse.data)
                 })
                 .catch((error) => {
-                    console.log('Got error movies', error)
                     context.commit('REGISTER_ERROR', error.message)
                 })
         },

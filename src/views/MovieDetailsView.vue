@@ -5,6 +5,7 @@ import BackButton from '../components/BackButton.vue'
 import apiConfig from '../configs/movie-db-config'
 import HeaderComponent from '../components/HeaderComponent.vue'
 import MovieDetailsComponent from '../components/MovieDetailsComponent.vue'
+import HistoryComponent from '../components/HistoryComponent.vue'
 
 const props = defineProps({
     id: {

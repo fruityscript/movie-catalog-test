@@ -50,7 +50,7 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
         <v-card-actions>
             <v-btn
                 variant="text"
-                color="teal-accent-4"
+                color="surface-variant"
                 @click="revealDescription = true"
                 >View Genres</v-btn
             >
@@ -90,7 +90,7 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
             <v-card
                 v-if="revealDescription"
                 class="v-card--reveal"
-                style="height: 100%"
+                style="height: 'fit-content'"
             >
                 <v-card-text class="pb-0">
                     <p class="text-h4 text--primary">Genres</p>
@@ -110,7 +110,7 @@ const renameMovie = (evnt) => store.dispatch('renameMovie', evnt)
                 <v-card-actions class="pt-0">
                     <v-btn
                         variant="text"
-                        color="teal-accent-4"
+                        color="surface-variant"
                         @click="revealDescription = false"
                     >
                         Close

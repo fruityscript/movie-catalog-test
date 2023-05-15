@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps({
     editableId: {
@@ -37,10 +37,6 @@ const renameMovie = () => {
     <v-dialog v-model="props.isOpened" activator="parent" width="auto">
         <v-card>
             <v-card-text>
-                Testing
-                {{ editableId }}
-                {{ isOpened }}
-                {{ editableName }}
                 <v-text-field
                     label="Movie title"
                     variant="underlined"

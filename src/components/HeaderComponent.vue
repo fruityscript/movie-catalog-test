@@ -63,15 +63,15 @@ watch(
 <template>
     <!-- Mobile -->
     <MqResponsive target="xs">
-        <div class="header__mobile">
-            <v-expansion-panels class="header__mobile__panel">
+        <div class="headerComponent__mobile">
+            <v-expansion-panels class="headerComponent__mobile__panel">
                 <v-expansion-panel>
                     <template v-slot:title>
                         <span v-if="routeName === 'movie-catalog'">Menu</span>
                         <span v-else>Movie Details</span>
                     </template>
                     <template v-slot:text>
-                        <v-expansion-panels class="header__mobile__panel">
+                        <v-expansion-panels class="headerComponent__mobile__panel">
                             <v-expansion-panel
                                 v-if="routeName === 'movie-catalog'"
                             >
@@ -127,15 +127,15 @@ watch(
 
     <!-- Phone & Tablet -->
     <MqResponsive :target="['xs', 'sm', 'md']">
-        <div class="header__mobile">
-            <v-expansion-panels class="header__mobile__panel">
+        <div class="headerComponent__mobile">
+            <v-expansion-panels class="headerComponent__mobile__panel">
                 <v-expansion-panel>
                     <template v-slot:title>
                         <span v-if="routeName === 'movie-catalog'">Menu</span>
                         <span v-else>Movie Details</span>
                     </template>
                     <template v-slot:text>
-                        <v-expansion-panels class="header__mobile__panel">
+                        <v-expansion-panels class="headerComponent__mobile__panel">
                             <v-expansion-panel
                                 v-if="routeName === 'movie-catalog'"
                             >
@@ -191,15 +191,15 @@ watch(
 
     <!-- Desktop -->
     <MqResponsive :target="['lg', 'xl']">
-        <div class="header__desktop">
+        <div class="headerComponent__desktop">
             <div
                 v-if="routeName === 'movie-details'"
-                class="header__desktop__search__input"
+                class="headerComponent__desktop__search__input"
             >
                 <BackButton />
             </div>
 
-            <div class="header__desktop__controls">
+            <div class="headerComponent__desktop__controls">
                 <v-switch
                     v-model="controlsSwitch"
                     hide-details
@@ -210,19 +210,19 @@ watch(
             </div>
 
             <div
-                class="header__desktop__search"
+                class="headerComponent__desktop__search"
                 v-if="routeName !== 'movie-details'"
             >
                 <div
                     v-if="searchMode === 'name'"
-                    class="header__desktop__search__input"
+                    class="headerComponent__desktop__search__input"
                 >
                     <v-text-field
                         clearable
                         @click:clear="
                             () => store.dispatch('getPopularMovies', 1)
                         "
-                        class="header__desktop__search__input__inner"
+                        class="headerComponent__desktop__search__input__inner"
                         v-model="searchString"
                         label="Search for the movie title..."
                     ></v-text-field>
@@ -230,10 +230,10 @@ watch(
 
                 <div
                     v-if="searchMode === 'genre'"
-                    class="header__desktop__search__input"
+                    class="headerComponent__desktop__search__input"
                 >
                     <v-select
-                        class="header__desktop__search__input__inner"
+                        class="headerComponent__desktop__search__input__inner"
                         clearable
                         chips
                         @click:clear="
@@ -246,13 +246,13 @@ watch(
                     ></v-select>
                 </div>
 
-                <div class="header__desktop__search__text">
+                <div class="headerComponent__desktop__search__text">
                     Search movie by
                     <span
                         @click="() => (searchMode = 'name')"
                         :style="
                             searchMode === 'name'
-                                ? 'color: red;'
+                                ? 'font-weight: 600; color: rgb(109, 148, 109);'
                                 : 'cursor: pointer;'
                         "
                         >NAME</span
@@ -262,7 +262,7 @@ watch(
                         @click="() => (searchMode = 'genre')"
                         :style="
                             searchMode === 'genre'
-                                ? 'color: red;'
+                                ? 'font-weight: 600; color: rgb(109, 148, 109);'
                                 : 'cursor: pointer;'
                         "
                         >GENRE</span

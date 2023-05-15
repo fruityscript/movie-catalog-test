@@ -64,7 +64,7 @@ const dragMouseDown = (e) => {
     <!-- Mobile -->
     <MqResponsive target="xs">
         <template v-if="history.length > 0">
-            <v-table class="history__mobile__table">
+            <v-table class="historyComponent__mobile__table">
                 <tbody>
                     <tr
                         v-for="movie in history.split('/').reverse()"
@@ -77,7 +77,10 @@ const dragMouseDown = (e) => {
                     </tr>
                 </tbody>
             </v-table>
-            <v-btn class="history__mobile__clear" @click="clearHistory">
+            <v-btn
+                class="historyComponent__mobile__clear"
+                @click="clearHistory"
+            >
                 Clear History
             </v-btn>
         </template>
@@ -88,13 +91,13 @@ const dragMouseDown = (e) => {
     <MqResponsive :target="['sm', 'md']">
         <v-expansion-panels
             v-if="historyMode === 'fixed'"
-            class="history__tablet"
+            class="historyComponent__tablet"
         >
             <v-expansion-panel>
                 <template v-slot:title> History </template>
                 <template v-slot:text>
                     <template v-if="history?.length > 0">
-                        <v-table class="history__tablet__table">
+                        <v-table class="historyComponent__tablet__table">
                             <tbody>
                                 <tr
                                     v-for="movie in history
@@ -113,7 +116,7 @@ const dragMouseDown = (e) => {
                         </v-table>
                         <div
                             v-if="history?.length > 0"
-                            class="history__desktop__tablet__actions"
+                            class="historyComponent__desktop__tablet__actions"
                         >
                             <v-btn @click="clearHistory" size="small"
                                 >Clear</v-btn
@@ -133,13 +136,15 @@ const dragMouseDown = (e) => {
     <MqResponsive :target="['lg', 'xl']">
         <v-expansion-panels
             v-if="historyMode === 'fixed'"
-            class="history__desktop__fixed"
+            class="historyComponent__desktop__fixed"
         >
             <v-expansion-panel>
                 <template v-slot:title> History </template>
                 <template v-slot:text>
                     <template v-if="history?.length > 0">
-                        <v-table class="history__desktop__fixed__table">
+                        <v-table
+                            class="historyComponent__desktop__fixed__table"
+                        >
                             <tbody>
                                 <tr
                                     v-for="movie in history
@@ -158,7 +163,7 @@ const dragMouseDown = (e) => {
                         </v-table>
                         <div
                             v-if="history?.length > 0"
-                            class="history__desktop__fixed__actions"
+                            class="historyComponent__desktop__fixed__actions"
                         >
                             <v-btn @click="clearHistory" size="small"
                                 >Clear</v-btn
@@ -172,57 +177,63 @@ const dragMouseDown = (e) => {
                 </template>
             </v-expansion-panel>
         </v-expansion-panels>
-        <!-- <div v-if="historyMode === 'floaty'" class="history__desktop__floaty">
-        History Floaty
-    </div> -->
 
         <div
             v-if="historyMode === 'floaty'"
             ref="draggableContainer"
-            class="history__desktop__draggableContainer"
+            @mousedown="dragMouseDown"
+            class="historyComponent__desktop__draggableContainer"
         >
-            <h3
-                class="history__desktop__draggableContainer__header"
-                @mousedown="dragMouseDown"
-            >
-                History
-            </h3>
-            <v-table
-                v-if="history?.length > 0"
-                class="history__desktop__draggableContainer__content"
-            >
-                <tbody>
-                    <tr
-                        v-for="movie in history.split('/').reverse()"
-                        :key="movie.split(';')[0]"
+            <v-card width="400">
+                <v-img
+                    height="200"
+                    src="https://cdn.pixabay.com/photo/2018/02/16/02/03/pocket-watch-3156771_1280.jpg"
+                    cover
+                    class="text-white"
+                >
+                    <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
+                        <v-toolbar-title class="text-h6">
+                            History
+                        </v-toolbar-title>
+                        <template v-slot:append>
+                            <v-btn
+                                @click="clearHistory"
+                                icon="mdi-delete-outline"
+                            ></v-btn>
+                        </template>
+                    </v-toolbar>
+                </v-img>
+
+                <v-card-text>
+                    <v-timeline
+                        v-if="history?.length > 0"
+                        density="compact"
+                        align="start"
                     >
-                        <td>{{ movie.split(';')[1] }}</td>
-                        <td v-if="movie.split(';')[0]">
-                            <v-btn @click="viewMovie(movie)"> View </v-btn>
-                        </td>
-                    </tr>
-                </tbody>
-            </v-table>
-            <div v-else class="history__desktop__draggableContainer__content">
-                <p
-                    class="history__desktop__draggableContainer__content__noHistory"
-                >
-                    No history yet
-                </p>
-            </div>
-            <div
-                v-if="history?.length > 0"
-                class="history__desktop__draggableContainer__actions"
-            >
-                <v-btn
-                    :style="'width: 100% !important'"
-                    @click="clearHistory"
-                    size="small"
-                    color="surface-variant"
-                    variant="text"
-                    >Clear</v-btn
-                >
-            </div>
+                        <v-timeline-item
+                            @click="viewMovie(movie)"
+                            v-for="movie in history.split('/').reverse()"
+                            :key="movie.split(';')[0]"
+                            :dot-color="'blue'"
+                            :style="'cursor: pointer;'"
+                            size="x-small"
+                        >
+                            <div>{{ movie.split(';')[1] }}</div>
+                        </v-timeline-item>
+                    </v-timeline>
+
+                    <div
+                        v-else
+                        class="historyComponent__desktop__draggableContainer__content"
+                    >
+                        <p
+                            class="historyComponent__desktop__draggableContainer__content__noHistory"
+                        >
+                            No history yet
+                        </p>
+                    </div>
+                </v-card-text>
+            </v-card>
         </div>
     </MqResponsive>
 </template>

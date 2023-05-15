@@ -65,6 +65,7 @@ watch(currentPage, (newPage) => {
             class="movieCatalog__desktop__pagination"
             :length="totalPages"
             v-model="currentPage"
+            :total-visible="7"
         ></v-pagination>
     </MqResponsive>
 </template>
