@@ -15,9 +15,13 @@ const store = createStore({
             movieSearchGenres: [],
             showHistoryDesktop: false,
             controlTypeDesktop: 'fixed',
+            isPageLoading: false,
         }
     },
     mutations: {
+        SET_LOADING(state: any, payload: boolean) {
+            state.isPageLoading = payload
+        },
         RENAME_MOVIE(state: any, payload: any) {
             const moviesListCopy = state.moviesList.results
             for (let i = 0; i < moviesListCopy.length; i++) {
@@ -63,6 +67,9 @@ const store = createStore({
         },
     },
     actions: {
+        startLoading(context: any, payload: boolean) {
+            context.commit('SET_LOADING', true)
+        },
         renameMovie(context: any, payload: any) {
             context.commit('RENAME_MOVIE', payload)
         },
@@ -88,6 +95,8 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
+                }).finally(() => {
+                    context.commit('SET_LOADING', false)
                 })
         },
         registerError(context: any, payload: string) {
@@ -108,6 +117,8 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
+                }).finally(() => {
+                    context.commit('SET_LOADING', false)
                 })
         },
         getMoviesByGenre(
@@ -122,6 +133,8 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
+                }).finally(() => {
+                    context.commit('SET_LOADING', false)
                 })
         },
         getMoviesByName(
@@ -136,6 +149,9 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
+                }).finally(() => {
+                    console.log('Enter finally')
+                    context.commit('SET_LOADING', false)
                 })
         },
         getMovies(
@@ -158,6 +174,9 @@ const store = createStore({
                 })
                 .catch((error) => {
                     context.commit('REGISTER_ERROR', error.message)
+                }).finally(() => {
+                    console.log('Enter finally')
+                    context.commit('SET_LOADING', false)
                 })
         },
         setMovies(context: any, payload: Array<Record<string, any>>) {
@@ -173,6 +192,6 @@ const store = createStore({
             context.commit('UPDATE_HISTORY_SIZE', payload)
         },
     },
-}) as Store
+}) as Store<any>
 
 export default store

@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import MovieCatalogComponent from '../components/MovieCatalogComponent.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
 import HeaderComponent from '../components/HeaderComponent.vue'
 import HistoryComponent from '../components/HistoryComponent.vue'
 import PaginationComponent from '../components/PaginationComponent.vue'
+import SpinnerComponent from '../components/SpinnerComponent.vue'
 
 const store = useStore()
+const isPageLoading = computed(() => store.state.isPageLoading)
+watch(isPageLoading, (newVal) => console.log('WATCHER', newVal))
 
 onMounted(() => {
     store.dispatch('getGenres', {})
@@ -21,7 +24,10 @@ onMounted(() => {
         <MqResponsive target="xs">
             <div class="container__mobile">
                 <HeaderComponent />
-                <MovieCatalogComponent />
+                <template v-if="isPageLoading">
+                    <SpinnerComponent />
+                </template>
+                <template v-else><MovieCatalogComponent /></template>
             </div>
         </MqResponsive>
 
@@ -29,7 +35,10 @@ onMounted(() => {
         <MqResponsive target="sm">
             <div class="container__tablet">
                 <HeaderComponent />
-                <MovieCatalogComponent />
+                <template v-if="isPageLoading">
+                    <SpinnerComponent />
+                </template>
+                <template v-else><MovieCatalogComponent /></template>
             </div>
         </MqResponsive>
 
@@ -37,7 +46,10 @@ onMounted(() => {
         <MqResponsive :target="['md', 'lg', 'xl']">
             <div class="container__desktop">
                 <HeaderComponent />
-                <MovieCatalogComponent />
+                <template v-if="isPageLoading">
+                    <SpinnerComponent />
+                </template>
+                <template v-else><MovieCatalogComponent /></template>
                 <HistoryComponent />
             </div>
         </MqResponsive>

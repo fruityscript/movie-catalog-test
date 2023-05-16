@@ -1,6 +1,13 @@
 @import './reset.scss';
 @import './variables.scss';
 
+.loadingSpinner {
+    background-color: transparent;
+    position: absolute;
+    left: 45vw;
+    bottom: 40vh;
+    z-index: 100;
+}
 .movieCatalog {
     display: flex;
     flex-direction: row;
