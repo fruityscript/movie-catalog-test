@@ -1,10 +1,16 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
+const loaderPlugin = new VueLoaderPlugin();
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpackPlugin = new HtmlWebpackPlugin({
+  template: "index.html",
+});
 
 module.exports = {
   entry: "./src/main.ts",
   plugins: [
-    new VueLoaderPlugin(),
+    loaderPlugin,
+    webpackPlugin,
   ],
   devServer: {
     static: {
@@ -58,15 +64,11 @@ module.exports = {
           "css-loader",
         ],
       },
-      // TS
       {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
-
-      // this will apply to both plain `.scss` files
-      // AND `<style lang="scss">` blocks in `.vue` files
       {
         test: /\.scss$/,
         use: ["vue-style-loader", "css-loader", "sass-loader"],

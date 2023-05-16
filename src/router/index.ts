@@ -1,6 +1,6 @@
 const vueRouter = require("vue-router");
-const MovieDetailsView = require("../views/MovieDetailsView.vue");
-const MovieCatalogView = require("../views/MovieCatalogView.vue");
+const MovieDetailsView = require("@/views/MovieDetailsView");
+const MovieCatalogView = require("@/views/MovieCatalogView");
 
 const router = vueRouter.createRouter({
   history: vueRouter.createWebHistory(import.meta.env.BASE_URL),

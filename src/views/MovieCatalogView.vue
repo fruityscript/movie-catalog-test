@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onMounted, computed, watch } from "vue";
 import { useStore } from "vuex";
-import MovieCatalogComponent from "../components/MovieCatalogComponent.vue";
-import ErrorMessage from "../components/ErrorMessage.vue";
-import HeaderComponent from "../components/HeaderComponent.vue";
-import HistoryComponent from "../components/HistoryComponent.vue";
-import PaginationComponent from "../components/PaginationComponent.vue";
-import SpinnerComponent from "../components/SpinnerComponent.vue";
+import MovieCatalogComponent from "@/components/MovieCatalogComponent.vue";
+import ErrorMessage from "@/components/ErrorMessage.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import HistoryComponent from "@/components/HistoryComponent.vue";
+import PaginationComponent from "@/components/PaginationComponent.vue";
+import SpinnerComponent from "@/components/SpinnerComponent.vue";
 
 const store = useStore();
 const isPageLoading = computed(() => store.state.isPageLoading);

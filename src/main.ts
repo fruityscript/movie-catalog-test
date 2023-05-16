@@ -1,8 +1,6 @@
 import { createApp } from "vue";
 
 import "vuetify/styles";
-import store from "./store";
-import router from "./router";
 
 import "./assets/styles/app.scss";
 import "@mdi/font/css/materialdesignicons.css";
@@ -14,7 +12,9 @@ const iconsetsMdi = require("vuetify/iconsets/mdi");
 const components = require("vuetify/components");
 const directives = require("vuetify/directives");
 const Vue3Mq = require("vue3-mq");
-const App = require("./App.vue");
+const router = require("./router");
+const store = require("./store");
+const App = require("./App");
 
 const fa = iconsetsFa;
 const { aliases, mdi } = iconsetsMdi;

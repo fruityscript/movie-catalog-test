@@ -2,12 +2,12 @@
 import axios from "axios";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
-import BackButton from "../components/BackButton.vue";
-import apiConfig from "../configs/movie-db-config";
-import HeaderComponent from "../components/HeaderComponent.vue";
-import MovieDetailsComponent from "../components/MovieDetailsComponent.vue";
-import HistoryComponent from "../components/HistoryComponent.vue";
-import SpinnerComponent from "../components/SpinnerComponent.vue";
+import BackButton from "@/components/BackButton.vue";
+import apiConfig from "@/configs/movie-db-config";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import MovieDetailsComponent from "@/components/MovieDetailsComponent.vue";
+import HistoryComponent from "@/components/HistoryComponent.vue";
+import SpinnerComponent from "@/components/SpinnerComponent.vue";
 
 const store = useStore();
 const isPageLoading = computed(() => store.state.isPageLoading);
