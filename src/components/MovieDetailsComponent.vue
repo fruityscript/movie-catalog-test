@@ -274,6 +274,7 @@ watch(props, () => {
       >
         <v-sheet class="ma-2 pa-2 m-a">
           <v-img
+            alt="Movie poster"
             class="m-a"
             :width="400"
             aspect-ratio="16/9"

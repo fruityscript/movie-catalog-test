@@ -45,6 +45,7 @@ const renameMovie = (evnt) => store.dispatch("renameMovie", evnt);
   <v-img
     :src="`https://image.tmdb.org/t/p/original/${movie?.poster_path}`"
     class="align-end"
+    alt="Movie poster"
     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
     height="200px"
     cover
