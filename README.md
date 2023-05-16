@@ -14,6 +14,10 @@ There are 3 screen types for Mobile, Tablet and Desktop devices.
 
 Desktop History component has two modes: fixed and floating
 
+## Important
+
+To generate error press the biggest page number in pagination, this will generate the request to the API to get non-existing page
+
 ## Recommended Versions
 
 npm - 9.5.1
