@@ -198,6 +198,7 @@ const dragMouseDown = (e) => {
         height="200"
         src="https://cdn.pixabay.com/photo/2018/02/16/02/03/pocket-watch-3156771_1280.jpg"
         cover
+        alt="Time picture"
         class="text-white"
       >
         <v-toolbar
