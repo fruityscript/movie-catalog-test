@@ -17,9 +17,7 @@
     &__mobile {
         &__content {
             margin-top: $header-height__mobile;
-            max-height: calc(
-                100vh - ($header-height__mobile + $pagination-height__mobile)
-            );
+            max-height: calc(100vh - ($header-height__mobile + $pagination-height__mobile));
             overflow-y: scroll;
         }
 
@@ -56,9 +54,7 @@
 
     &__desktop {
         &__content {
-            height: calc(
-                100vh - ($header-height__desktop + $pagination-height__desktop)
-            );
+            height: calc(100vh - ($header-height__desktop + $pagination-height__desktop));
 
             &__cards {
                 width: 100%;
@@ -80,6 +76,11 @@
             background-color: white;
         }
     }
+}
+
+.loadingSpinner {
+    width: 100px;
+    height: 100px;
 }
 
 .movieDetails {
@@ -323,7 +324,6 @@
 
             &__text {
                 &__option {
-
                     &__active {
                         font-weight: 600;
                         color: rgb(109, 148, 109);
@@ -334,7 +334,7 @@
                 }
 
                 &__separator {
-                    margin: 0px 10px
+                    margin: 0px 10px;
                 }
             }
 

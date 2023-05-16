@@ -37,7 +37,6 @@ watch(currentPage, (newPage) => {
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <v-pagination
     v-model="currentPage"
@@ -46,7 +45,6 @@ watch(currentPage, (newPage) => {
   ></v-pagination>
 </MqResponsive>
 
-<!-- Tablet -->
 <MqResponsive :target="['sm', 'md']">
   <v-pagination
     v-model="currentPage"
@@ -55,7 +53,6 @@ watch(currentPage, (newPage) => {
   ></v-pagination>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <v-pagination
     v-model="currentPage"

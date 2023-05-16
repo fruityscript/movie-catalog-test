@@ -72,10 +72,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.loading-spinner {
-    width: 100px;
-    height: 100px;
-}
-</style>

@@ -19,49 +19,44 @@ onMounted(() => {
 </script>
 
 <template>
-<main>
-  <!-- Mobile -->
-  <MqResponsive target="xs">
-    <div class="container__mobile">
-      <header-component />
-      <template v-if="isPageLoading">
-        <spinner-component />
-      </template>
-      <template v-else>
-        <movie-catalog-component />
-      </template>
-    </div>
-  </MqResponsive>
+<MqResponsive target="xs">
+  <div class="container__mobile">
+    <header-component />
+    <template v-if="isPageLoading">
+      <spinner-component />
+    </template>
+    <template v-else>
+      <movie-catalog-component />
+    </template>
+  </div>
+</MqResponsive>
 
-  <!-- Tablet -->
-  <MqResponsive target="sm">
-    <div class="container__tablet">
-      <header-component />
-      <template v-if="isPageLoading">
-        <spinner-component />
-      </template>
-      <template v-else>
-        <movie-catalog-component />
-      </template>
-    </div>
-  </MqResponsive>
+<MqResponsive target="sm">
+  <div class="container__tablet">
+    <header-component />
+    <template v-if="isPageLoading">
+      <spinner-component />
+    </template>
+    <template v-else>
+      <movie-catalog-component />
+    </template>
+  </div>
+</MqResponsive>
 
-  <!-- PC -->
-  <MqResponsive :target="['md', 'lg', 'xl']">
-    <div class="container__desktop">
-      <header-component />
-      <template v-if="isPageLoading">
-        <spinner-component />
-      </template>
-      <template v-else>
-        <movie-catalog-component />
-      </template>
-      <history-component />
-    </div>
-  </MqResponsive>
+<MqResponsive :target="['md', 'lg', 'xl']">
+  <div class="container__desktop">
+    <header-component />
+    <template v-if="isPageLoading">
+      <spinner-component />
+    </template>
+    <template v-else>
+      <movie-catalog-component />
+    </template>
+    <history-component />
+  </div>
+</MqResponsive>
 
-  <pagination-component />
+<pagination-component />
 
-  <error-message />
-</main>
+<error-message />
 </template>

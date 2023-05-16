@@ -62,7 +62,6 @@ const dragMouseDown = (e) => {
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <template v-if="history.length > 0">
     <v-table class="historyComponent__mobile__table">
@@ -92,7 +91,6 @@ const dragMouseDown = (e) => {
   </template>
 </MqResponsive>
 
-<!-- Tablet -->
 <MqResponsive :target="['sm', 'md']">
   <v-expansion-panels
     v-if="historyMode === 'fixed'"
@@ -140,7 +138,6 @@ const dragMouseDown = (e) => {
   </v-expansion-panels>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <v-expansion-panels
     v-if="historyMode === 'fixed'"

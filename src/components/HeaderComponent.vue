@@ -58,7 +58,6 @@ watch(
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <div class="headerComponent__mobile">
     <v-expansion-panels class="headerComponent__mobile__panel">
@@ -115,7 +114,6 @@ watch(
   </div>
 </MqResponsive>
 
-<!-- Phone & Tablet -->
 <MqResponsive :target="['xs', 'sm', 'md']">
   <div class="headerComponent__mobile">
     <v-expansion-panels class="headerComponent__mobile__panel">
@@ -172,7 +170,6 @@ watch(
   </div>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <div class="headerComponent__desktop">
     <div

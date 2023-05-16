@@ -2,10 +2,10 @@
 import { ref, watch } from "vue";
 
 const props = defineProps({
-  // movie: {
-  //   type: String,
-  //   required: true,
-  // },
+  movie: {
+    type: String,
+    required: true,
+  },
 });
 
 const currentMovie = ref({});
@@ -16,7 +16,6 @@ watch(props, () => {
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <div class="movieDetails__mobile">
     <div
@@ -140,7 +139,6 @@ watch(props, () => {
   </div>
 </MqResponsive>
 
-<!-- Tablet -->
 <MqResponsive :target="['sm', 'md']">
   <div class="movieDetails__mobile">
     <div
@@ -264,7 +262,6 @@ watch(props, () => {
   </div>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <v-container class="movieDetails__desktop">
     <v-row no-gutters>

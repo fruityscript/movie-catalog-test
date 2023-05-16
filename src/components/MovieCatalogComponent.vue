@@ -12,7 +12,6 @@ onMounted(() => {
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <v-container class="movieCatalog__mobile__content">
     <v-row dense>
@@ -27,7 +26,6 @@ onMounted(() => {
   </v-container>
 </MqResponsive>
 
-<!-- Tablet -->
 <MqResponsive :target="['sm', 'md']">
   <v-container class="movieCatalog__tablet__content">
     <v-row dense>
@@ -42,7 +40,6 @@ onMounted(() => {
   </v-container>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <div class="movieCatalog__desktop__content">
     <v-container

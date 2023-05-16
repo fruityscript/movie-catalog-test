@@ -31,7 +31,6 @@ onMounted(() => {
 </script>
 
 <template>
-<!-- Mobile -->
 <MqResponsive target="xs">
   <div class="container__mobile">
     <header-component />
@@ -44,7 +43,6 @@ onMounted(() => {
   </div>
 </MqResponsive>
 
-<!-- Tablet -->
 <MqResponsive :target="['sm', 'md']">
   <div class="container__tablet">
     <header-component />
@@ -58,7 +56,6 @@ onMounted(() => {
   </div>
 </MqResponsive>
 
-<!-- Desktop -->
 <MqResponsive :target="['lg', 'xl']">
   <div class="container__desktop">
     <header-component />
@@ -72,7 +69,6 @@ onMounted(() => {
   </div>
 </MqResponsive>
 
-<!-- NOT Desktop -->
 <MqResponsive :target="['xs', 'sm', 'md']">
   <back-button />
 </MqResponsive>

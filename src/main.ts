@@ -1,24 +1,25 @@
-import './assets/styles/app.scss'
+import { createApp } from "vue";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import "vuetify/styles";
+import store from "./store";
+import router from "./router";
 
-import * as Vue3Mq from 'vue3-mq'
-
-// Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-import { fa } from "vuetify/iconsets/fa"
-import { aliases, mdi } from "vuetify/lib/iconsets/mdi"
-
+import "./assets/styles/app.scss";
 import "@mdi/font/css/materialdesignicons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
-const vuetify = createVuetify({
+const vuetifyLib = require("vuetify");
+const iconsetsFa = require("vuetify/iconsets/fa");
+const iconsetsMdi = require("vuetify/iconsets/mdi");
+const components = require("vuetify/components");
+const directives = require("vuetify/directives");
+const Vue3Mq = require("vue3-mq");
+const App = require("./App.vue");
+
+const fa = iconsetsFa;
+const { aliases, mdi } = iconsetsMdi;
+
+const vuetify = vuetifyLib.createVuetify({
   icons: {
     defaultSet: "mdi",
     aliases,
@@ -29,17 +30,17 @@ const vuetify = createVuetify({
   },
   components,
   directives,
-})
+});
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
-app.use(vuetify)
-app.use(store)
-app.component('MqResponsive', Vue3Mq.MqResponsive)
-app.mount('#app')
+app.use(router);
+app.use(vuetify);
+app.use(store);
+app.component("mq-responsive", Vue3Mq.MqResponsive);
+app.mount("#app");
 
 // Responsive Options
 Vue3Mq.updateBreakpoints({
-    preset: "vuetify"
-})
+  preset: "vuetify",
+});

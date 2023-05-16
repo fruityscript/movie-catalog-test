@@ -1,5 +1,24 @@
 {
   "files": [],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "types": ["vite/client", "node", "vuetify"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/vuetify/types"
+    ],
+    "paths": {
+      "@/*": [
+       "./*"
+      ]
+     }
+  },
   "references": [
     {
       "path": "./tsconfig.node.json"
