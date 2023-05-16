@@ -8,6 +8,7 @@
     bottom: 40vh;
     z-index: 100;
 }
+
 .movieCatalog {
     display: flex;
     flex-direction: row;
@@ -21,6 +22,7 @@
             );
             overflow-y: scroll;
         }
+
         &__pagination {
             max-height: $pagination-height__mobile;
             height: $pagination-height__mobile;
@@ -39,6 +41,7 @@
             max-height: $content-height__tablet;
             overflow-y: scroll;
         }
+
         &__pagination {
             max-height: $pagination-height__mobile;
             height: $pagination-height__mobile;
@@ -65,6 +68,7 @@
                 overflow-y: auto;
             }
         }
+
         &__pagination {
             max-height: $pagination-height__mobile;
             height: $pagination-height__mobile;
@@ -83,6 +87,18 @@
         height: 100%;
         max-height: calc(100vh - $header-height__desktop);
         overflow-y: auto;
+
+        .mr-5 {
+            margin-right: 5px;
+        }
+
+        .m-a {
+            margin: auto;
+        }
+
+        .h-90 {
+            height: 90%;
+        }
 
         .centeredText {
             text-align: center;
@@ -104,6 +120,7 @@
             height: 100%;
             max-height: calc(100vh - $header-height__desktop);
         }
+
         &__details {
             height: 100%;
             max-height: calc(100vh - $header-height__desktop);
@@ -116,6 +133,7 @@
         &__header {
             color: white;
             padding: 5vh 2vw;
+            background-size: cover,
 
             &__title {
                 text-align: center;
@@ -126,7 +144,12 @@
                 &__sub {
                     font-size: 12px;
                 }
+                &__release {
+                    font-weight: 100;
+                    font-size: 12px;
+                }
             }
+
             &__genres {
                 display: flex;
                 flex-direction: row;
@@ -134,14 +157,17 @@
                 justify-content: space-around;
                 margin: 2vh 0;
             }
+
             &__overview {
                 text-align: center;
                 margin: 4vh 0;
             }
+
             &__rating {
                 &__head {
                     text-align: center;
                 }
+
                 &__main {
                     display: flex;
                     flex-direction: row;
@@ -170,6 +196,7 @@
             &__header {
                 margin: 2vh 0;
             }
+
             &__budget {
                 display: flex;
                 flex-direction: row;
@@ -203,6 +230,10 @@
     }
 }
 
+.h-fc {
+    height: fit-content;
+}
+
 .errorMessage {
     &__mobile {
         width: 80% !important;
@@ -210,6 +241,7 @@
         top: 9vh !important;
         left: 10% !important;
     }
+
     &__desktop {
         position: fixed !important;
         top: 5vh !important;
@@ -263,7 +295,7 @@
 
             &__input {
                 position: relative;
-                z-index: 20;
+                z-index: 999999999999999999999999 !important;
             }
         }
     }
@@ -280,6 +312,7 @@
         &__controls {
             width: 15%;
         }
+
         &__search {
             width: 85%;
             display: flex;
@@ -287,6 +320,23 @@
             align-items: center;
             text-align: center;
             justify-content: space-between;
+
+            &__text {
+                &__option {
+
+                    &__active {
+                        font-weight: 600;
+                        color: rgb(109, 148, 109);
+                    }
+                    &__inactive {
+                        cursor: pointer;
+                    }
+                }
+
+                &__separator {
+                    margin: 0px 10px
+                }
+            }
 
             &__input {
                 width: 100%;
@@ -300,6 +350,10 @@
 }
 
 .historyComponent {
+    .cursorPointer {
+        cursor: pointer;
+    }
+
     &__mobile {
         &__table {
             max-height: 50vh;
@@ -310,6 +364,7 @@
             margin-top: 2vh;
         }
     }
+
     &__tablet {
         width: 300px !important;
         position: absolute !important;
@@ -322,6 +377,7 @@
             padding-top: 15px;
         }
     }
+
     &__desktop {
         &__fixed {
             width: 300px !important;
@@ -336,6 +392,7 @@
                 padding-top: 15px;
             }
         }
+
         &__draggableContainer {
             width: fit-content;
             height: fit-content;
@@ -363,6 +420,7 @@
                 height: 4vh;
                 max-height: 4vh;
             }
+
             &__content {
                 margin-top: 4vh;
                 height: calc(100% - 4vh - 30px);
@@ -377,6 +435,7 @@
                     padding: 10px 0;
                 }
             }
+
             &__actions {
                 display: flex;
                 justify-content: center;
